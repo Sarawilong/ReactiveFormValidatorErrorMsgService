@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ValidationService } from 'src/app/services/validation.service';
 
@@ -7,8 +7,12 @@ import { ValidationService } from 'src/app/services/validation.service';
   templateUrl: './validation-management.component.html',
   styleUrls: ['./validation-management.component.scss']
 })
-export class ValidationManagementComponent {
+export class ValidationManagementComponent implements OnInit {
   userForm: FormGroup;
+
+  password: string;
+
+  show: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -21,12 +25,27 @@ export class ValidationManagementComponent {
     });
   }
 
-  saveUser() {
+  ngOnInit() {
+    this.password = 'password';
+  }
+
+  public saveUser() {
     if (this.userForm.dirty && this.userForm.valid) {
       alert(
         `Name: ${this.userForm.value.name}
         Email: ${this.userForm.value.email}`
       );
     }
+  }
+
+  public hidePassword() {
+    if (this.password === 'password') {
+      this.password = 'text';
+      this.show = true;
+    } else {
+      this.password = 'password';
+      this.show = false;
+    }
+    console.log('HIDE');
   }
 }

@@ -12,8 +12,14 @@
   <app-control-messages [control]="userForm.get('email')"></app-control-messages>
 
   <label for="password">Password</label>
-  <textarea formControlName="password" id="password"></textarea>
+    <div class="password">
+    <input formControlName="password" id="password" [type]="password"/>
+    <button class="showPassword"(click)="hidePassword()">
+      <i class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+      <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+    </button>
+  </div>
   <app-control-messages [control]="userForm.get('password')"></app-control-messages>
-
+  
   <button type="submit" [disabled]="!userForm.valid">Submit</button>
 </form>
