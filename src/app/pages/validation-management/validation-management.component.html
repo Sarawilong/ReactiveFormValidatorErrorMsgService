@@ -1,0 +1,19 @@
+<form [formGroup]="userForm" (submit)="saveUser()">
+  <label for="name">Name</label>
+  <input formControlName="name" id="name" />
+  <app-control-messages [control]="userForm.get('name')"></app-control-messages>
+
+  <label for="name">Last Name</label>
+  <input formControlName="lastname" id="lastname" />
+  <app-control-messages [control]="userForm.get('lastname')"></app-control-messages>
+
+  <label for="email">Email</label>
+  <input formControlName="email" id="email" />
+  <app-control-messages [control]="userForm.get('email')"></app-control-messages>
+
+  <label for="password">Password</label>
+  <textarea formControlName="password" id="password"></textarea>
+  <app-control-messages [control]="userForm.get('password')"></app-control-messages>
+
+  <button type="submit" [disabled]="!userForm.valid">Submit</button>
+</form>
