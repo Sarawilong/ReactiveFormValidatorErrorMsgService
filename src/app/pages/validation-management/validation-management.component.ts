@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ValidationService } from 'src/app/services/validation.service';
 
 @Component({
@@ -18,8 +18,8 @@ export class ValidationManagementComponent implements OnInit {
     private fb: FormBuilder,
   ) {
     this.userForm = this.fb.group({
-      name: [ '', Validators.required ],
-      lastname: [ '', Validators.required ],
+      name: new FormControl(null, Validators.required),
+      lastname: new FormControl(null, Validators.required),
       email: [ '', [ValidationService.emailValidator]],
       password: ['', [ValidationService.passwordValidator]],
     });
